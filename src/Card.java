@@ -1,5 +1,13 @@
 //Card object
 public class Card {
+    public Card(int number, String symbol, int point){
+        this.number=number;
+        this.symbol=symbol;
+        this.point=point;
+    }
+    public Card(){
+        this.point=0;
+    }
     private int number;
     private String symbol;
     private int point;
