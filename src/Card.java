@@ -6,7 +6,7 @@ public class Card {
         this.point=point;
     }
     public Card(){
-        this.point=0;
+        this.point=1;
     }
     private int number;
     private String symbol;
