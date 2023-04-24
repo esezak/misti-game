@@ -4,8 +4,13 @@ public class Main {
         Deck deck = new Deck();
         deck.see();
         System.out.println();
-        deck.cut(10);
 
+        deck.shuffle();
         deck.see();
+        System.out.println();
+        deck.cut(10);
+        deck.see();
+
+
     }
 }

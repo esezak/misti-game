@@ -64,6 +64,9 @@ public class Deck {
         }
         deck = (ArrayList<Card>) tempdeck.clone();
     }
+    public void shuffle(){
+        Collections.shuffle(deck);
+    }
     public void addToTopCard(int add){topcard = topcard + add;}
     public int getTopcard(){return topcard;}
     public Card getCard(int index){return deck.get(index);}
