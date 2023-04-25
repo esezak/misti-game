@@ -3,6 +3,7 @@ public class Main {
         System.out.println("Welcome to the mişti game!");
         //test codes
         Deck deck = new Deck();
+        Board board = new Board();
         deck.see();
         System.out.println();
 
@@ -10,6 +11,11 @@ public class Main {
         deck.see();
         System.out.println();
         deck.cut(10);
+        deck.see();
+        System.out.println(deck.seeTopcard().getCard());
+        deck.transferTopCard(board.getBoard());
+        System.out.println(board.getCard());
+        System.out.println();
         deck.see();
         //test codes end
         /*
