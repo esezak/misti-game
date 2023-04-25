@@ -1,2 +1,2 @@
-public class NoviceBot {
+public class NoviceBot extends Player{
 }
