@@ -66,11 +66,12 @@ public class Deck {
     public void shuffle(){
         Collections.shuffle(deck);
     }
-
-
-
-    public Card getCard(int index){return deck.get(index);}
-    public Card seeTopcard(){
+    public String getCard(int index) {return deck.get(index).getCard();}
+    public String seeTopCard() {
+        return deck.get(deck.size()-1).getCard();
+    }
+    public Card getCardObject(int index){return deck.get(index);}
+    public Card seeTopcardObject(){
         return deck.get(deck.size()-1);
     }
     public void transferTopCard(ArrayList<Card> array){

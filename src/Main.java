@@ -1,23 +1,10 @@
 public class Main {
     public static void main(String[] args){
         System.out.println("Welcome to the mişti game!");
-        //test codes
-        Deck deck = new Deck();
-        Board board = new Board();
-        deck.see();
-        System.out.println();
+        Game game = new Game();
 
-        deck.shuffle();
-        deck.see();
-        System.out.println();
-        deck.cut(10);
-        deck.see();
-        System.out.println(deck.seeTopcard().getCard());
-        deck.transferTopCard(board.getBoard());
-        System.out.println(board.getCard());
-        System.out.println();
-        deck.see();
         //test codes end
+
         /*
           Game game = new Game();
           //sets up game
@@ -32,7 +19,5 @@ public class Main {
             puan hesabı
             sonuçlar
          */
-
-
     }
 }
