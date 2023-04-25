@@ -7,47 +7,19 @@ public class Deck {
         }
     }//see what is inside the deck (for debug)
 
-    public Deck(){//create an unshuffled deck
-        for(int i = 0; i<52;i++){
-            Card temp = new Card(); // temp object for assigning to Card[]
-            if(i<13){//first 13
-                temp.setNumber(i+1);
-                temp.setSymbol("♠");
-                temp.setPoint(1);
-                deck.add(i,temp);
-            }
-            else if(i<26){//second 13
-                temp.setNumber((i%13)+1);
-                temp.setSymbol("♥");
-                temp.setPoint(1);
-                deck.add(i,temp);
-            }
-            else if(i<39){//third 13
-                temp.setNumber((i%13)+1);
-                temp.setSymbol("♦");
-                temp.setPoint(1);
-                deck.add(i,temp);
-            }
-            else{//forth 13
-                temp.setNumber((i%13)+1);
-                temp.setSymbol("♣");
-                temp.setPoint(1);
-                deck.add(i,temp);
+    public Deck(){//create an shuffled deck
+        create();
+        shuffle();
+    }
 
+    public void create(){
+        int[] numbers = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        String[] symbols = {"♠","♥","♦","♣"};
+        for(String symbol : symbols){
+            for(int number : numbers){
+                deck.add(new Card(number,symbol,1));
             }
         }
-        Card temp2 = new Card();
-        temp2.setNumber(10);
-        temp2.setSymbol("♦");
-        temp2.setPoint(3);
-        deck.add(35,temp2);
-        Card temp3 = new Card();
-        temp3.setNumber(2);
-        temp3.setSymbol("♣");
-        temp3.setPoint(2);
-        deck.add(40,temp3);
-
-
     }//create an unshuffled deck
 
     public void cut(int cutLocation){
@@ -73,8 +45,13 @@ public class Deck {
     public Card seeTopcard(){
         return deck.get(deck.size()-1);
     }
-    public void transferTopCard(ArrayList<Card> array){
-        array.add(deck.get(deck.size()-1));
-        deck.remove(deck.size()-1);
+    public ArrayList<Card> getDeck(){
+        return deck;
     }
+    public Card transferCard(){
+        Card temp = seeTopcard();
+        deck.remove(deck.size()-1);
+        return temp;
+    }
+
 }
