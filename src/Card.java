@@ -34,5 +34,11 @@ public class Card {
             return getNumber()+getSymbol();
         }
     }
+    public boolean equals(Card card){
+        if(number == card.getNumber()&& symbol.equals(card.getSymbol())&&point== card.getPoint()){
+            return true;
+        }
+        return false;
+    }
 
 }
