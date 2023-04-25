@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Player {
     ArrayList<Card> hand = new ArrayList<Card>();
     ArrayList<Card> cardsTaken = new ArrayList<Card>();
+    private String name;
     public void see(){
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
@@ -16,6 +17,15 @@ public class Player {
             }
         }
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public Card getCard(int index){
         return hand.get(index);
     }
