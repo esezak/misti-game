@@ -24,21 +24,10 @@ public class Game {
         // to see the card we want (string)
         System.out.println("Fifth card: ");
         System.out.println(deck.getCard(4));
-        
-        // to see the top card (object)
-        Card topCard = deck.seeTopcardObject();
-        System.out.println("Top card");
 
-        if(topCard != null) {
-            System.out.println(topCard.getCard());
-        }
-        else {
-            System.out.println("Error ! ");
-        }
-
-        // to see the card we want (object) 
-        Card card = deck.getCardObject(4);
-        System.out.println("Fifth card: ");
-        System.out.println(card.getCard());
+        // adding cards to board array
+        board.addCard(deck);
+        System.out.println("Top card on board: ");
+        System.out.println(board.getTopCard());
     }
 }
