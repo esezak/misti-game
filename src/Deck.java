@@ -43,15 +43,25 @@ public class Deck {
 
     public Card getCard(int index){return deck.get(index);}
     public Card seeTopcard(){
-        return deck.get(deck.size()-1);
+        if(deck.size()>0){
+            return deck.get(deck.size()-1);
+        }
+        else{
+            return new Card(0,"0",0);//will return this if there are no cards remain
+        }
     }
     public ArrayList<Card> getDeck(){
         return deck;
     }
     public Card transferCard(){
+        if(deck.size()>0){
         Card temp = seeTopcard();
         deck.remove(deck.size()-1);
         return temp;
+        } else{
+            return new Card(0,"0",0);//empty card meaning the cards have finished
+            //should not suppose to go here but just in case
+        }
     }
 
 }

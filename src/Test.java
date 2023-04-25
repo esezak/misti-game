@@ -10,7 +10,11 @@ public class Test {
         Board board = new Board(deck);
         deck.see();System.out.println();
 
-        board.seeBoard();
+        board.info();
+        board.flushBoard();
+        board.info();
+        board.getTopCard();
+
 
     }
 }
