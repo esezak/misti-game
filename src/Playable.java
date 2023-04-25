@@ -1,7 +1,8 @@
 
 
 public interface Playable {
-    public void playCard(int index);//add board
+    public void turn(Board board);
+    public void play();
 
 
 }
