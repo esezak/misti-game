@@ -18,6 +18,10 @@ public class Player {
             }
         }
     }
+    public void addCard(Deck deck){
+        Card card = deck.transferCard();
+        hand.add(card);
+    }
     public void addPoint(int point){
         this.point+=point;
     }

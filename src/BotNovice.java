@@ -1,9 +1,9 @@
 import java.util.Random;
 public class BotNovice extends Player implements Playable{
     Random random;
-    public BotNovice(){
+    public BotNovice(String name){
+        setName(name);
         random = new Random();
-        super.setName("Novice Bot");
     }
 
     @Override
