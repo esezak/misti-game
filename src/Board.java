@@ -21,6 +21,10 @@ public class Board {
         board.add(card);
         addPoint(card.getPoint());
     }
+    public void addCard(Card card){
+        board.add(card);
+        addPoint(card.getPoint());
+    }
     public Card getTopCard(){
         if(board.size()>0) {
             return board.get(board.size() - 1);

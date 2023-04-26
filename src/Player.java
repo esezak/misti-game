@@ -7,15 +7,22 @@ Get Card
 import java.util.ArrayList;
 
 public class Player {
-    ArrayList<Card> hand = new ArrayList<Card>();
-    ArrayList<Card> cardsTaken = new ArrayList<Card>();
+    protected ArrayList<Card> hand = new ArrayList<Card>();
+    protected ArrayList<Card> cardsTaken = new ArrayList<Card>();
     private String name;
+    private int point;
     public void see(){
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
                 System.out.print("("+(i+1)+") "+hand.get(i).getCard());
             }
         }
+    }
+    public void addPoint(int point){
+        this.point+=point;
+    }
+    public int getPoint(){
+        return point;
     }
 
     public void setName(String name) {
