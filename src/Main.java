@@ -1,6 +1,9 @@
 public class Main {
     public static void main(String[] args){
+      Game game = new Game();
+
         //test codes end
+
         /*
           Game game = new Game();
           //sets up game
@@ -15,7 +18,5 @@ public class Main {
             puan hesabı
             sonuçlar
          */
-
-
     }
 }

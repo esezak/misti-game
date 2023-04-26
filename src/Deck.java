@@ -39,8 +39,6 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-
-
     public Card getCard(int index){return deck.get(index);}
     public Card seeTopcard(){
         if(deck.size()>0){
