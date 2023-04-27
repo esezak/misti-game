@@ -1,6 +1,19 @@
 public class Main {
     public static void main(String[] args){
+<<<<<<< Updated upstream
       Game game = new Game();
+=======
+      Game game = new Game(args);
+        //number of players, point file name, name and expertise level of each player, and verboseness
+        //level
+        
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
         //test codes end
 
