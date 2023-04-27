@@ -5,7 +5,7 @@ import java.util.*;
 public class Game {
     private Deck deck = new Deck();
     private Board board = new Board(deck);
-    
+    private ArrayList<Player> players = new ArrayList<Player>();
 
     public Game(String[] args) {
         //Parameters include "2 point.txt Can Human Ege Novice verbose"
@@ -13,7 +13,7 @@ public class Game {
         Random r = new Random();
         deck.shuffle();
         deck.cut(r.nextInt(52));
-        ArrayList<Player> players = new ArrayList<Player>();
+
         for(int i = 0; i<args.length;i++){
             String arg = args[i];
             switch(arg){
@@ -33,7 +33,11 @@ public class Game {
                     break;
 
             }
+            dealCards();
         }
+
+    }
+    public void dealCards(){
         for(int i = 0; i<4;i++){//deal cards
             for(Player p : players){
                 p.addCard(deck);
