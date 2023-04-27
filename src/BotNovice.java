@@ -8,6 +8,7 @@ public class BotNovice extends Player implements Playable{
 
     @Override
     public int play(Board board) {//plays a random card
-        return random.nextInt(getHand().size());
+        int choice = random.nextInt(getHand().size());
+        return choice;
     }
 }

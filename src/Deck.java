@@ -47,6 +47,9 @@ public class Deck {
             return new Card(0,"0",0);//will return this if there are no cards remain
         }
     }
+    public int getSize(){
+        return deck.size();
+    }
     public ArrayList<Card> getDeck(){
         return deck;
     }

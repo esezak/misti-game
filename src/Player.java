@@ -6,7 +6,7 @@ Get Card
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements Playable{
     protected ArrayList<Card> hand = new ArrayList<Card>();
     protected ArrayList<Card> cardsTaken = new ArrayList<Card>();
     private String name;
@@ -59,5 +59,17 @@ public class Player {
     }
     public void takeCard(Card card){
         cardsTaken.add(card);
+    }
+    public void takeBoard(Board board){
+        for(Card c : board.getBoard()){
+            takeCard(c);
+            addPoint(board.getBoardPoint());
+            board.flushBoard();
+        }
+    }
+
+    @Override
+    public int play(Board board) {
+        return 0;
     }
 }
