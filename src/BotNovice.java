@@ -2,7 +2,7 @@ import java.util.Random;
 public class BotNovice extends Player implements Playable{
     Random random;
     public BotNovice(String name){
-        setName(name);
+        setName(name+" (Novice)");
         random = new Random();
     }
 

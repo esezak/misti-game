@@ -11,8 +11,8 @@ public class Player implements Playable{
     protected ArrayList<Card> cardsTaken = new ArrayList<Card>();
     private String name;
     private int point;
-    private boolean lastTake=false;
-    public void see(){
+    private boolean lastTake=false;//indicates who last took cards from the board
+    public void see(){//mainly for human player and debug
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
                 System.out.print("("+(i+1)+")"+hand.get(i).getCard()+" ");

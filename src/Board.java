@@ -4,7 +4,7 @@ public class Board {
     private ArrayList<Card> board = new ArrayList<Card>();
     private int boardPoint;
 
-    public Board(Deck deck){
+    public Board(Deck deck){//initialises the board
         boardPoint=0;
         for(int i =0; i<4;i++){
             addCard(deck);
@@ -16,29 +16,31 @@ public class Board {
     public int getBoardPoint(){
         return boardPoint;
     }
-    public void addCard(Deck deck){
+    public void addCard(Deck deck){//adds cards from deck
         Card card = deck.transferCard();
         board.add(card);
         addPoint(card.getPoint());
     }
-    public void addCard(Card card){
+    public void addCard(Card card){//for adding cards to the board from players
         board.add(card);
         addPoint(card.getPoint());
     }
-    public Card getTopCard(){
+    public Card getTopCard(){//gives the last card on the deck
         if(board.size()>0) {
             return board.get(board.size() - 1);
         }else{
-            return new Card(0,"0",0);
+            return new Card(0,"0",0);//just in case
         }
     }
     public ArrayList<Card> getBoard(){
         return board;
     }
-    public void seeBoard(){
+    public void seeBoard(){//prints board as Board: ... \n
+        System.out.print("Board: ");
         for(Card c:board){
             System.out.print(c.getCard()+" ");
         }
+        System.out.println();
     }
 
     public void flushBoard(){
@@ -48,6 +50,9 @@ public class Board {
     public void info(){//debugging method
         seeBoard();
         System.out.println("\nBoard point: "+getBoardPoint());
+    }
+    public int getSize(){
+        return board.size();
     }
 
 }

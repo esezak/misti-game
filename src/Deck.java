@@ -1,14 +1,28 @@
 import java.util.*;
 public class Deck {
     private ArrayList<Card> deck = new ArrayList<Card>(52);//a deck of card
+    private boolean isVerbose;
     public void see(){
+        System.out.print("\nDeck :  ");
         for(Card c: deck){
             System.out.print(c.getCard()+", ");//see what is inside the deck
-        }
-    }//see what is inside the deck (for debug)
+        }//System.out.print("\nPoints: ");
+        /*if(isVerbose){//wanted to align points with cards but gave up
+            for(Card c: deck){
+                if(c.getNumber()==9){
+                    System.out.print(c.getPoint()+"   ");
+                }
+                else {
+                    System.out.print(c.getPoint() + "  ");
+                }
+            }
+        }*/
 
-    public Deck(){//create an shuffled deck
+    }//mainly for debug
+
+    public Deck(boolean isVerbose){//creates a deck
         create();
+        this.isVerbose=isVerbose;
     }
 
     public void create(){
@@ -22,23 +36,23 @@ public class Deck {
     }//create an unshuffled deck
 
     public void cut(int cutLocation){
-        ArrayList<Card> tempdeck = new ArrayList<Card>(52);
-        int j=0;    // cutlocation variable to store where we last are
+        ArrayList<Card> tempDeck = new ArrayList<Card>(52);
+        int j=0;    // cutLocation variable to store where we last are
         for(int i=cutLocation; i< deck.size();i++ ){
-            tempdeck.add(j,deck.get(i));//take 52-cutlocation cards move them to front
+            tempDeck.add(j,deck.get(i));//take 52-cutLocation cards move them to front
             j++;
         }
         for(int i=0;i<cutLocation;i++){
-            tempdeck.add(j,deck.get(i));//insert the remaining cards to where we left off
+            tempDeck.add(j,deck.get(i));//insert the remaining cards to where we left off
             j++;
         }
-        deck = (ArrayList<Card>) tempdeck.clone();
+        deck = (ArrayList<Card>) tempDeck.clone();
     }
     public void shuffle(){
         Collections.shuffle(deck);
     }
 
-    public Card getCard(int index){return deck.get(index);}
+    //public Card getCard(int index){return deck.get(index);}   //wasn't used
     public Card seeTopCard(){
         if(deck.size()>0){
             return deck.get(deck.size()-1);

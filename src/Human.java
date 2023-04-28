@@ -1,16 +1,14 @@
 import java.util.Scanner;
 public class Human extends Player implements Playable {
     public Human(String name){
-        setName(name);
+        setName(name+" (Human)");
     }
 
     @Override
     public int play(Board board) {
         Scanner sc = new Scanner(System.in);
         int input;
-        System.out.print("\nBoard: ");
         board.seeBoard();
-        System.out.println();
         System.out.print("Hand: ");
         see();//sees hand
         System.out.println();
