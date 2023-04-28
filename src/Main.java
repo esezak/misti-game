@@ -3,9 +3,13 @@ public class Main {
       Game game = new Game(args);
         //number of players, point file name, name and expertise level of each player, and verboseness
         //level
-        do{
-        game.round();
-        }while(game.getDeckSize()>0);
+        for(int i=0; i<48/game.playerCount();i++){//changes based on how many players are in the game
+
+                game.start();
+
+            }
+        game.boardCleanup();
+        game.debug();
 
 
 

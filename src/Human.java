@@ -13,9 +13,10 @@ public class Human extends Player implements Playable {
         System.out.println();
         System.out.print("Hand: ");
         see();//sees hand
+        System.out.println();
         try{
-            System.out.println("Input: ");
-            return Integer.parseInt(sc.next());
+            System.out.print("Input: ");
+            return Integer.parseInt(sc.next())-1;
         }catch (Exception e){
             System.out.println("Error has occurred");
         }

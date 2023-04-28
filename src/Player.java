@@ -11,10 +11,11 @@ public class Player implements Playable{
     protected ArrayList<Card> cardsTaken = new ArrayList<Card>();
     private String name;
     private int point;
+    private boolean lastTake=false;
     public void see(){
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
-                System.out.print("("+(i+1)+") "+hand.get(i).getCard());
+                System.out.print("("+(i+1)+")"+hand.get(i).getCard()+" ");
             }
         }
     }
@@ -51,8 +52,10 @@ public class Player implements Playable{
         return hand;
     }
 
-    public ArrayList<Card> getCardsTaken() {
-        return cardsTaken;
+    public void seeCardsTaken() {
+        for(Card c: cardsTaken){
+            System.out.print(c.getCard()+", ");
+        }
     }
     public void addCard(Card card){
         hand.add(card);
@@ -71,5 +74,15 @@ public class Player implements Playable{
     @Override
     public int play(Board board) {
         return 0;
+    }
+    public void resetLastTake(){//reset this property
+        lastTake = false;
+    }
+    public void lastTookCards(){//find if it took cards last
+        lastTake = true;
+    }
+
+    public boolean isLastTake() {
+        return lastTake;
     }
 }
