@@ -56,9 +56,9 @@ public class Game {
     public void debug(){// shows deck size, player hands, scores and the state of the board
         System.out.println("Deck size: "+getDeckSize());
         for(int i=0;i<players.size();i++){
-            System.out.print("Player "+ (i+1) +" Hand: "); players.get(i).see();
-            System.out.print("\nPlayer "+(i+1)+ "Taken Cards: "); players.get(i).seeCardsTaken();
-            System.out.print("\nPlayer "+ (i+1) +" Point: "+players.get(i).getPoint()+"\n");
+            System.out.print("Player "+ (i+1) +" "); players.get(i).see();
+            //System.out.print("\nPlayer "+(i+1)+ "Taken Cards: "); players.get(i).seeCardsTaken();//not yet implemented
+            System.out.print("Player "+ (i+1) +" Point: "+players.get(i).getPoint()+"\n");
         }
         board.seeBoard();
     }
