@@ -13,10 +13,12 @@ public class Player implements Playable{
     private int point;
     private boolean lastTake=false;//indicates who last took cards from the board
     public void see(){//mainly for human player and debug
+        System.out.print("Hand: ");
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
                 System.out.print("("+(i+1)+")"+hand.get(i).getCard()+" ");
             }
+            System.out.println();
         }
     }
     public void addCard(Deck deck){
