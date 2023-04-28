@@ -13,6 +13,9 @@ public class Game {
         //Parameters include "2 point.txt Can Human Ege Novice verbose"
         setVerbose(args);
         deck = new Deck(isVerbose);
+        //points are here
+        
+
         Random r = new Random();
         deck.see();
         deck.shuffle();

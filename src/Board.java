@@ -29,7 +29,7 @@ public class Board {
         if(board.size()>0) {
             return board.get(board.size() - 1);
         }else{
-            return new Card(0,"0",0);//just in case
+            return new Card("0","0",0);//just in case
         }
     }
     public ArrayList<Card> getBoard(){
