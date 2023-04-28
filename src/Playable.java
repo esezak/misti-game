@@ -1,7 +1,8 @@
 
 
 public interface Playable {
-    public void playCard(int index);//add board
+
+    public int play(Board board);// returns the index of the desired card
 
 
 }

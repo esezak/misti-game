@@ -9,7 +9,6 @@ public class Deck {
 
     public Deck(){//create an shuffled deck
         create();
-        shuffle();
     }
 
     public void create(){
@@ -39,10 +38,8 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-
-
     public Card getCard(int index){return deck.get(index);}
-    public Card seeTopcard(){
+    public Card seeTopCard(){
         if(deck.size()>0){
             return deck.get(deck.size()-1);
         }
@@ -50,12 +47,15 @@ public class Deck {
             return new Card(0,"0",0);//will return this if there are no cards remain
         }
     }
+    public int getSize(){
+        return deck.size();
+    }
     public ArrayList<Card> getDeck(){
         return deck;
     }
     public Card transferCard(){
         if(deck.size()>0){
-        Card temp = seeTopcard();
+        Card temp = seeTopCard();
         deck.remove(deck.size()-1);
         return temp;
         } else{
