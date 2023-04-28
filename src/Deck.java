@@ -26,10 +26,10 @@ public class Deck {
     }
 
     public void create(){
-        int[] numbers = {1,2,3,4,5,6,7,8,9,10,11,12,13};
+        String[] numbers = {"1","2","3","4","5","6","7","8","9","10","J","Q","K"};
         String[] symbols = {"♠","♥","♦","♣"};
         for(String symbol : symbols){
-            for(int number : numbers){
+            for(String number : numbers){
                 deck.add(new Card(number,symbol,1));
             }
         }
@@ -58,7 +58,7 @@ public class Deck {
             return deck.get(deck.size()-1);
         }
         else{
-            return new Card(0,"0",0);//will return this if there are no cards remain
+            return new Card("0","0",0);//will return this if there are no cards remain
         }
     }
     public int getSize(){
@@ -73,7 +73,7 @@ public class Deck {
         deck.remove(deck.size()-1);
         return temp;
         } else{
-            return new Card(0,"0",0);//empty card meaning the cards have finished
+            return new Card("0","0",0);//empty card meaning the cards have finished
             //should not suppose to go here but just in case
         }
     }

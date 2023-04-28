@@ -47,7 +47,7 @@ public class Player implements Playable{
         hand.remove(index);
         hand.trimToSize();
     }
-    public int selectedCardNum(int index){//for comparison with the card on deck
+    public String selectedCardNum(int index){//for comparison with the card on deck
         return hand.get(index).getNumber();
     }
     public ArrayList<Card> getHand() {

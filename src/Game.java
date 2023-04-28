@@ -107,17 +107,17 @@ public class Game {
         boardCheck(player);
     }
     public void boardCheck(Player player){//actually updates the board states
-        int boardCardNum = board.getTopCard().getNumber();
-        int playedCardNum = bufferCard.getNumber();
+        String boardCardNum = board.getTopCard().getNumber();
+        String playedCardNum = bufferCard.getNumber();
         int boardCardPoint = board.getTopCard().getPoint();
         int playedCardPoint = bufferCard.getPoint();
-        if(board.getSize()==1 && boardCardNum==playedCardNum){//mişti check and take board
+        if(board.getSize()==1 && boardCardNum.equals(playedCardNum)){//mişti check and take board
             int pointToAdd = (boardCardPoint+playedCardPoint)*5;
             player.addPoint(pointToAdd);
             resetPlayerTakes();//sets players take value to false
             player.lastTookCards();//sets the player who took the cards true
             board.flushBoard();//empties board and board points
-        }else if(boardCardNum==playedCardNum | (playedCardNum==11&&board.getSize()!=0)){//take board normal
+        }else if(boardCardNum.equals(playedCardNum) | (playedCardNum.equals("J")&&board.getSize()!=0)){//take board normal
             board.addCard(bufferCard);
             player.addPoint(board.getBoardPoint());
             resetPlayerTakes();
