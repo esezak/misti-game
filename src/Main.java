@@ -10,6 +10,7 @@ public class Main {
             }
         game.boardCleanup();
         game.debug();
+        BotExpert.printPlayedCards();
 
 
 

@@ -19,10 +19,12 @@ public class Board {
     public void addCard(Deck deck){//adds cards from deck
         Card card = deck.transferCard();
         board.add(card);
+        BotExpert.cardTracker(card.getNumber());
         addPoint(card.getPoint());
     }
     public void addCard(Card card){//for adding cards to the board from players
         board.add(card);
+        BotExpert.cardTracker(card.getNumber());
         addPoint(card.getPoint());
     }
     public Card getTopCard(){//gives the last card on the deck

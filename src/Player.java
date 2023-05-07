@@ -83,8 +83,18 @@ public class Player implements Playable{
     public void lastTookCards(){//find if it took cards last
         lastTake = true;
     }
-
     public boolean isLastTake() {
         return lastTake;
+    }
+    public static int parseNumber(String number){
+        if(number.equals("J")){
+            return 11;
+        }else if(number.equals("Q")){
+            return 12;
+        }else if(number.equals("K")){
+            return 13;
+        }else{
+            return Integer.parseInt(number);
+        }
     }
 }
