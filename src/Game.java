@@ -36,7 +36,7 @@ public class Game {
                     players.add(new BotNormal(args[i-1]));// not finished
                     break;
                 case "Expert":
-                    //players.add((new BotExpert(args[i-1])); // not yet implemented
+                    players.add(new BotExpert(args[i-1])); // needs to be tested
                     break;
                 default:
                     break;

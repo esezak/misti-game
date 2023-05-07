@@ -71,7 +71,7 @@ public class BotExpert extends Player implements Playable{
     }
 
 
-    public int simulatePoint(Board board, Card card){
+    public int simulatePoint(Board board, Card card){//simulates the amount of point gained/lost from playing the card
         if(board.getSize()==1){
             return (board.getBoardPoint()+ card.getPoint())*5;
         }
