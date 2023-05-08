@@ -7,8 +7,7 @@ Get Card
 import java.util.ArrayList;
 
 public class Player implements Playable{
-    protected ArrayList<Card> hand = new ArrayList<Card>();
-    protected ArrayList<Card> cardsTaken = new ArrayList<Card>();
+    private ArrayList<Card> hand = new ArrayList<Card>();
     private String name;
     private int point;
     private boolean lastTake=false;//indicates who last took cards from the board
@@ -47,32 +46,16 @@ public class Player implements Playable{
         hand.remove(index);
         hand.trimToSize();
     }
-    public String selectedCardNum(int index){//for comparison with the card on deck
-        return hand.get(index).getNumber();
-    }
     public ArrayList<Card> getHand() {
         return hand;
     }
 
-    public void seeCardsTaken() {
-        for(Card c: cardsTaken){
-            System.out.print(c.getCard()+", ");
+    public int simulatePoint(Board board, Card card){//simulates the amount of point gained/lost from playing the card
+        if(board.getSize()==1){
+            return (board.getBoardPoint()+ card.getPoint())*5;
         }
+        return board.getBoardPoint()+card.getPoint();
     }
-    public void addCard(Card card){
-        hand.add(card);
-    }
-    public void takeCard(Card card){
-        cardsTaken.add(card);
-    }
-    public void takeBoard(Board board){
-        for(Card c : board.getBoard()){
-            takeCard(c);
-            addPoint(board.getBoardPoint());
-            board.flushBoard();
-        }
-    }
-
     @Override
     public int play(Board board) {
         return 0;

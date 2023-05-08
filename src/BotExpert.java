@@ -31,7 +31,7 @@ public class BotExpert extends Player implements Playable{
                         selectedIndex=counter;
                         hasSelected=true;
                     }
-                } else if (c.getNumber().equals("J")&& simulatePoint(board, c) > 0) {
+                } else if (c.getNumber().equals("J")) {
                     if(simulatePoint(board,c)<0){
                         okToPlay[counter]=false;
                     }else{
@@ -60,8 +60,8 @@ public class BotExpert extends Player implements Playable{
         int MPCPlayedTimes=0;
 
         //find the most played card at hand and play it!!!
-        for(int i=0; i<hand.size();i++){
-            int currentCardPlayedTimes = playedCardNums[parseNumber(hand.get(i).getNumber())];
+        for(int i=0; i<getHand().size();i++){
+            int currentCardPlayedTimes = playedCardNums[parseNumber(getHand().get(i).getNumber())];
             if(currentCardPlayedTimes>=MPCPlayedTimes && okToPlay[i] ){
                 MPCPlayedTimes = currentCardPlayedTimes;
                 mostPlayedCardIndex = i;
@@ -71,12 +71,7 @@ public class BotExpert extends Player implements Playable{
     }
 
 
-    public int simulatePoint(Board board, Card card){//simulates the amount of point gained/lost from playing the card
-        if(board.getSize()==1){
-            return (board.getBoardPoint()+ card.getPoint())*5;
-        }
-        return board.getBoardPoint()+card.getPoint();
-    }
+
 
 
     public static void cardTracker(String playedCardNum){

@@ -119,7 +119,9 @@ public class Game {
             player.addPoint(pointToAdd);
             resetPlayerTakes();//sets players take value to false
             player.lastTookCards();//sets the player who took the cards true
+            board.addCard(bufferCard);
             board.flushBoard();//empties board and board points
+            System.out.println("Miştiiii!");
         }else if(boardCardNum.equals(playedCardNum) | (playedCardNum.equals("J")&&board.getSize()!=0)){//take board normal
             board.addCard(bufferCard);
             player.addPoint(board.getBoardPoint());
