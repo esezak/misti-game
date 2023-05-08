@@ -3,19 +3,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.nio.file.Paths;
+import java.util.Scanner;
 public class FileHandling {
-    private boolean check(String fileName) {
-        return false;
-        //splitlendikten sonra size 2 değilse yanlış format
-    }
 
     public void fileReading(String fileName, ArrayList<Card> Deck) {
-        BufferedReader reader = null;
+        Scanner reader = null;
         try {
-            reader = new BufferedReader(new FileReader(fileName));
-            String line;
-            while((line = reader.readLine()) != null) {
-                String[] components = line.split(" ");
+            reader = new Scanner(fileName);
+
+            while(reader.hasNextLine()) {
+                String[] components = reader.nextLine().split(" ");
 
                 char symbol = components[0].charAt(0);
                 String number = components[0].substring(1);
@@ -37,31 +35,19 @@ public class FileHandling {
                     if (card.getNumber().equals(number) && card.getSymbol().equals(s) && card.getPoint() == 1) {
                         card.setPoint(point);
                         break;
-                    } else if (s.equals("*") && card.getNumber().equals(number)) {
+                    } else if (s.equals("*") && card.getNumber().equals(number) && card.getPoint() == 1) {
                         card.setPoint(point);
-                    } else if (number.equals("*") && card.getSymbol().equals(s)) {
+                    } else if (number.equals("*") && card.getSymbol().equals(s) && card.getPoint() == 1) {
                         card.setPoint(point);
                     }
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (reader != null) {
+                reader.close();
             }
         }
-    }
-}
-
-class Test2 {
-    public static void main(String[]args) {
-        Deck deck = new Deck(true);
-        FileHandling fileRead = new FileHandling();
-        fileRead.fileReading("/Users/defne/IdeaProjects/misti-game/src/points.txt", deck.getDeck());
     }
 }

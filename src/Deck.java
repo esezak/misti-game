@@ -6,17 +6,17 @@ public class Deck {
         System.out.print("\nDeck :  ");
         for(Card c: deck){
             System.out.print(c.getCard()+", ");//see what is inside the deck
-        }//System.out.print("\nPoints: ");
-        /*if(isVerbose){//wanted to align points with cards but gave up
+        }System.out.print("\nPoints: ");
+        if(isVerbose){//wanted to align points with cards but gave up
             for(Card c: deck){
-                if(c.getNumber()==9){
+                if(c.getNumber().equals("9")){
                     System.out.print(c.getPoint()+"   ");
                 }
                 else {
                     System.out.print(c.getPoint() + "  ");
                 }
             }
-        }*/
+        }
 
     }//mainly for debug
 

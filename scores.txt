@@ -1,0 +1,10 @@
+Can_(Expert),44
+Can_(Expert),43
+Defne(Normal),36
+Ege(Normal),32
+Defne(Normal),31
+Can_(Expert),30
+Ege(Normal),27
+Ege(Normal),25
+Ege(Normal),24
+Can_(Expert),23

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class Human extends Player implements Playable {
     public Human(String name){
-        setName(name+" (Human)");
+        setName(name+"_(Human)");
     }
 
     @Override

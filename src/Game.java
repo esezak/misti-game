@@ -145,4 +145,15 @@ public class Game {
             }
         }
     }
+    public Player getWinner(){
+        int highestScore=0;
+        int playerIndex=0;
+        for(int i = 0; i<playerCount();i++){
+            if(highestScore<players.get(i).getPoint()){
+                highestScore = players.get(i).getPoint();
+                playerIndex=i;
+            }
+        }
+        return players.get(playerIndex);
+    }
 }
