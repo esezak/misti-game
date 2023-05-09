@@ -29,11 +29,11 @@ public class FileHandling {
 
                 char symbol = components[0].charAt(0);
                 String number = components[0].substring(1);
-                int point = Integer.parseInt(components[1]);
+                int point = Integer.parseInt(components[1]);//can throw error   INFO
 
                 String s = Character.toString(symbol);
 
-                if (s.equals("H")||s.equals("h")) {
+                if (s.equals("H")||s.equals("h")) {// converts symbol to unicode counterparts
                     s = "♥";
                 } else if (s.equals("S")||s.equals("s")) {
                     s = "♠";
@@ -50,6 +50,8 @@ public class FileHandling {
                     } else if (s.equals("*") && card.getNumber().equals(number) && card.getPoint() == 1) {
                         card.setPoint(point);
                     } else if (number.equals("*") && card.getSymbol().equals(s) && card.getPoint() == 1) {
+                        card.setPoint(point);
+                    } else if (number.equals("*") && s.equals("*") && card.getPoint()==1){
                         card.setPoint(point);
                     }
                 }

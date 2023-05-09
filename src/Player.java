@@ -76,6 +76,8 @@ public class Player implements Playable{
             return 12;
         }else if(number.equals("K")){
             return 13;
+        }else if(number.equals("A")){
+            return 1;
         }else{
             return Integer.parseInt(number);
         }

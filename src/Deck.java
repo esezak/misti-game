@@ -26,7 +26,7 @@ public class Deck {
     }
 
     public void create(){
-        String[] numbers = {"1","2","3","4","5","6","7","8","9","10","J","Q","K"};
+        String[] numbers = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
         String[] symbols = {"♠","♥","♦","♣"};
         for(String symbol : symbols){
             for(String number : numbers){
