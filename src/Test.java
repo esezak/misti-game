@@ -5,8 +5,7 @@ public class Test {
         //for testing do not commit here
         Deck deck = new Deck(true);
         FileHandling fileRead = new FileHandling();
-        Paths.get("points.txt");
-        fileRead.fileReading("/src/points.txt", deck.getDeck());
+        fileRead.fileReading("points.txt", deck.getDeck());
         deck.see();
     }
 }

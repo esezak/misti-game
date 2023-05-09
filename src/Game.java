@@ -14,6 +14,8 @@ public class Game {
         setVerbose(args);
         deck = new Deck(isVerbose);
         //points are here
+        FileHandling fileHandling = new FileHandling();
+        fileHandling.fileReading(args[1],deck.getDeck());
         
 
         Random r = new Random();

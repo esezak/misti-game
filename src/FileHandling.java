@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.nio.file.Paths;
 import java.util.Scanner;
 public class FileHandling {
-
+    private Scanner reader = null;
     public void fileReading(String fileName, ArrayList<Card> Deck) {
-        Scanner reader = null;
+
         try {
-            reader = new Scanner(fileName);
+            reader = new Scanner(Paths.get(fileName));
 
             while(reader.hasNextLine()) {
                 String[] components = reader.nextLine().split(" ");
@@ -42,8 +42,8 @@ public class FileHandling {
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException noFile) {
+            System.out.println("File not found using default values");
         } finally {
             if (reader != null) {
                 reader.close();
