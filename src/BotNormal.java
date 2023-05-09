@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class BotNormal extends Player implements Playable{
     public BotNormal(String name){
-        setName(name+ "(Normal)");
+        setName(name+ " (Normal)");
     }
     private boolean[] okToPlay;
     @Override

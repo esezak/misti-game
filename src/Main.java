@@ -1,8 +1,3 @@
-import java.io.FileWriter;
-import java.nio.file.Paths;
-import java.util.Formatter;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args){
@@ -10,11 +5,9 @@ public class Main {
         //number of players, point file name, name and expertise level of each player, and verboseness
         //level
         for(int i=0; i<48/game.playerCount();i++){//changes based on how many players are in the game
-
                 game.start();
-
             }
-        game.boardCleanup();
+        game.boardCleanup();//gives remaining cards on the board to the player who last took the board
         game.debug();
         BotExpert.printPlayedCards();
         Player player = game.getWinner();
@@ -22,7 +15,7 @@ public class Main {
 
         //-------------- high score list--------------
         LeaderBoard leaderBoard = new LeaderBoard(player);
-
+        leaderBoard.printList();
 
 
     }

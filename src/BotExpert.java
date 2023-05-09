@@ -1,6 +1,6 @@
 public class BotExpert extends Player implements Playable{
     public BotExpert(String name){
-        setName(name+"_(Expert)");
+        setName(name+" (Expert)");
     }
     private static int[] playedCardNums = new int[14];
     private boolean[] okToPlay;
