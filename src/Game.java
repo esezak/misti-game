@@ -8,14 +8,15 @@ public class Game {
     private Card bufferCard; // a card for temprorarily store a card
     private int roundctr; // for keeping track of when to deal cards
     private boolean isVerbose=false; // check if verbose mode is enabled
+    private FileHandling fileHandling;
 
     public Game(String[] args) {
         //Parameters include "2 point.txt Can Human Ege Novice verbose"
         setVerbose(args);
         deck = new Deck(isVerbose);
         //points are here
-        FileHandling fileHandling = new FileHandling();
-        fileHandling.fileReading(args[1],deck.getDeck());
+        fileHandling = new FileHandling(args[1],deck.getDeck());
+        fileHandling.pointReading();
         
 
         Random r = new Random();
@@ -157,5 +158,9 @@ public class Game {
             }
         }
         return players.get(playerIndex);
+    }
+    public void showLeaderBoard(){
+        fileHandling.addPlayer(getWinner());
+        fileHandling.printList();
     }
 }

@@ -14,9 +14,7 @@ public class Main {
         System.out.println("Winner is: "+ player.getName()+" with "+player.getPoint()+" points!");
 
         //-------------- high score list--------------
-        LeaderBoard leaderBoard = new LeaderBoard(player);
-        leaderBoard.printList();
-
+        game.showLeaderBoard();
 
     }
 }
