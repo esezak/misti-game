@@ -5,15 +5,15 @@ import java.nio.file.Paths;
 import java.util.Formatter;
 import java.util.Scanner;
 public class FileHandling {
-    private Scanner reader = null;
-    private Formatter formatter = null;
-    private FileWriter writer = null;
-    private String[] names = new String[10];
-    private String[] scores = new String[10];
-    private Player player;
-    private String point;
-    private String fileName;
-    private ArrayList<Card> deck;
+    private Scanner reader = null;//both
+    private Formatter formatter = null;//leaderboard
+    private FileWriter writer = null;//leaderboard
+    private String[] names = new String[10];//leaderboard
+    private String[] scores = new String[10];//leaderboard
+    private Player player;//leaderboard
+    private String point;//leaderboard
+    private String fileName;//points
+    private ArrayList<Card> deck;//points
     public FileHandling(String pointFileName,ArrayList<Card> deck){
         fileName = pointFileName;
         this.deck=deck;
@@ -23,42 +23,52 @@ public class FileHandling {
     public void pointReading() {
         try {
             reader = new Scanner(Paths.get(fileName));
-
             while(reader.hasNextLine()) {
-                String[] components = reader.nextLine().split(" ");
+                String line = reader.nextLine();
+                String[] components;
+                String s;
+                try{
+                if(!line.equals("")) {
+                    components = line.split(" ");
+                    char symbol = components[0].charAt(0);
+                    String number = components[0].substring(1);
+                    int point = Integer.parseInt(components[1]);//can throw error   INFO
+                    s = Character.toString(symbol);
 
-                char symbol = components[0].charAt(0);
-                String number = components[0].substring(1);
-                int point = Integer.parseInt(components[1]);//can throw error   INFO
+                    if (s.equals("H") || s.equals("h")) {// converts symbol to unicode counterparts
+                        s = "♥";
+                    } else if (s.equals("S") || s.equals("s")) {
+                        s = "♠";
+                    } else if (s.equals("C") || s.equals("c")) {
+                        s = "♣";
+                    } else if (s.equals("D") || s.equals("d")) {
+                        s = "♦";
+                    }
 
-                String s = Character.toString(symbol);
-
-                if (s.equals("H")||s.equals("h")) {// converts symbol to unicode counterparts
-                    s = "♥";
-                } else if (s.equals("S")||s.equals("s")) {
-                    s = "♠";
-                } else if (s.equals("C")||s.equals("c")) {
-                    s = "♣";
-                } else if (s.equals("D")||s.equals("d")){
-                    s = "♦";
-                }
-
-                for (Card card : deck) {
-                    if (card.getNumber().equals(number) && card.getSymbol().equals(s) && card.getPoint() == 1) {
-                        card.setPoint(point);
-                        break;
-                    } else if (s.equals("*") && card.getNumber().equals(number) && card.getPoint() == 1) {
-                        card.setPoint(point);
-                    } else if (number.equals("*") && card.getSymbol().equals(s) && card.getPoint() == 1) {
-                        card.setPoint(point);
-                    } else if (number.equals("*") && s.equals("*") && card.getPoint()==1){
-                        card.setPoint(point);
+                    for (Card card : deck) {
+                        if (card.getNumber().equals(number) && card.getSymbol().equals(s) && card.getPoint() == 1) {
+                            card.setPoint(point);
+                            break;
+                        } else if (s.equals("*") && card.getNumber().equals(number) && card.getPoint() == 1) {
+                            card.setPoint(point);
+                        } else if (number.equals("*") && card.getSymbol().equals(s) && card.getPoint() == 1) {
+                            card.setPoint(point);
+                        } else if (number.equals("*") && s.equals("*") && card.getPoint() == 1) {
+                            card.setPoint(point);
+                        }
                     }
                 }
+                }catch(NumberFormatException numex){
+                    System.out.println("Please use the format: <symbol><number> <point value>");
+                }
+
             }
         } catch (IOException noFile) {
             System.out.println("File not found using default values");
-        } finally {
+        } catch(NumberFormatException numberFormatException){
+            //System.out.println("Please use the format: <symbol><number> <point value>");
+        }
+        finally {
             if (reader != null) {
                 reader.close();
             }

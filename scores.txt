@@ -1,3 +1,8 @@
 Can (Expert),279
 Can (Expert),47
-Defne (Normal),41
+Can (Expert),46
+Defne (Normal),45
+Can (Expert),41
+Can (Expert),36
+Ege (Normal),33
+Ege (Normal),27
