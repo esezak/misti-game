@@ -5,18 +5,10 @@ public class Deck {
     public void see(){
         System.out.print("\nDeck :  ");
         for(Card c: deck){
-            System.out.print(c.getCard()+", ");//see what is inside the deck
-        }System.out.print("\nPoints: ");
-        if(isVerbose){//wanted to align points with cards but gave up
-            for(Card c: deck){
-                if(c.getNumber().equals("9")||c.getNumber().equals("10")){
-                    System.out.print(c.getPoint()+"   ");
-                }
-                else {
-                    System.out.print(c.getPoint() + "   ");
-                }
-            }
+            System.out.print(c.getCard()+"("+c.getPoint()+"), ");//see what is inside the deck
+
         }
+
 
     }//mainly for debug
 

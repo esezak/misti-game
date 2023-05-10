@@ -25,14 +25,14 @@ public class BotExpert extends Player implements Playable{
                     We can take the board but if we play we get negative points,
                     we should avoid playing this card
                     */
-                    if(simulatePoint(board,c)<0){
+                    if(simulatePoint(board,c)<=0){
                         okToPlay[counter]=false;
                     }else{
                         selectedIndex=counter;
                         hasSelected=true;
                     }
                 } else if (c.getNumber().equals("J")) {
-                    if(simulatePoint(board,c)<0){
+                    if(simulatePoint(board,c)<=0){
                         okToPlay[counter]=false;
                     }else{
                         hasJack=true;

@@ -121,11 +121,7 @@ public class FileHandling {
         }
     }
     private void setListSize(){//sets the list size to 10 if list size is bigger than 10
-        if(names.size()>10){
-            listSize = 10;
-        } else{
-            listSize = names.size();
-        }
+        listSize = Math.min(names.size(), 10);
     }
     private void writeToFile(){
         setListSize();

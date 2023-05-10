@@ -42,16 +42,12 @@ public class Board {
         for(Card c:board){
             System.out.print(c.getCard()+" ");
         }
-        System.out.println();
+        System.out.println("\nPoints on board: "+getBoardPoint());
     }
 
     public void flushBoard(){
         board.clear();
         boardPoint = 0;
-    }
-    public void info(){//debugging method
-        seeBoard();
-        System.out.println("\nBoard point: "+getBoardPoint());
     }
     public int getSize(){
         return board.size();

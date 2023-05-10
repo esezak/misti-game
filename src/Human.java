@@ -15,6 +15,7 @@ public class Human extends Player implements Playable {
                 see();//sees hand
                 System.out.print("Input: ");
                 input = Integer.parseInt(sc.next())-1;
+                System.out.println();
                 getCard(input);//will fail if no card exists
                 return input;
             }catch (NumberFormatException numberFormatException){

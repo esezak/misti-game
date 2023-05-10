@@ -5,8 +5,9 @@ public class Game {
     private Deck deck;
     private Board board;
     private ArrayList<Player> players = new ArrayList<Player>();
-    private Card bufferCard; // a card for temprorarily store a card
-    private int roundctr; // for keeping track of when to deal cards
+    private Card bufferCard; // a card for temporarily store a card
+    private int roundCounter; // for keeping track of when to deal cards
+    private int roundNumber;
     private boolean isVerbose=false; // check if verbose mode is enabled
     private FileHandling fileHandling;
 
@@ -17,7 +18,7 @@ public class Game {
         //points are here
         fileHandling = new FileHandling(args[1],deck.getDeck());
         fileHandling.pointReading();
-        
+        roundNumber =1;
 
         Random r = new Random();
         deck.see();
@@ -26,7 +27,7 @@ public class Game {
         deck.cut(r.nextInt(52));
         //deck.see();
         board = new Board(deck);
-        roundctr=0;
+        roundCounter =0;
         for(int i = 0; i<args.length;i++){//adds users based on arguments
             switch(args[i]){
                 case "Human":
@@ -35,11 +36,11 @@ public class Game {
                 case "Novice":
                     players.add(new BotNovice(args[i-1]));
                     break;
-                case "Normal":
-                    players.add(new BotNormal(args[i-1]));// not finished
+                case "Normal"://plays jack when empty board
+                    players.add(new BotNormal(args[i-1]));
                     break;
                 case "Expert":
-                    players.add(new BotExpert(args[i-1])); // needs to be tested
+                    players.add(new BotExpert(args[i-1]));
                     break;
                 default:
                     break;
@@ -63,17 +64,16 @@ public class Game {
         System.out.println("Deck size: "+getDeckSize());
         for(int i=0;i<players.size();i++){
             System.out.print("Player "+ (i+1) +" "); players.get(i).see();
-            //System.out.print("\nPlayer "+(i+1)+ "Taken Cards: "); players.get(i).seeCardsTaken();//not yet implemented
             System.out.print("Player "+ (i+1) +" Point: "+players.get(i).getPoint()+"\n");
         }
         board.seeBoard();
     }
     public void start(){
         round();
-        roundctr++;
-        if(roundctr==4){
+        roundCounter++;
+        if(roundCounter ==4){
             dealCards();
-            roundctr=0;
+            roundCounter =0;
         }
     }
     public int playerCount(){
@@ -91,9 +91,14 @@ public class Game {
     }
     public void round(){//makes every player play once
         if(isVerbose){
-            System.out.println("------New Round------");
+            System.out.println("------Round " + (roundNumber++)+"------");
         }
         for(Player player: players){
+            if(isVerbose){
+                System.out.println();
+                player.see();
+            }
+
             int play = player.play(board);
             message(player,play);
             boardUpdate(player,play);
