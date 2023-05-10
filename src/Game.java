@@ -15,6 +15,7 @@ public class Game {
         //Parameters include "2 point.txt Can Human Ege Novice verbose"
         setVerbose(args);
         deck = new Deck(isVerbose);
+
         //points are here
         fileHandling = new FileHandling(args[1],deck.getDeck());
         fileHandling.pointReading();
@@ -29,17 +30,28 @@ public class Game {
         board = new Board(deck);
         roundCounter =0;
         for(int i = 0; i<args.length;i++){//adds users based on arguments
-            switch(args[i]){
-                case "Human":
+            //Oyuncu sayısını kontrol etmeli
+            //insn oyuncu var mı kontrol etmeli
+            //4 oyuncudan fazla oyuncu var mı kontrol
+            // 1 den fazla insan oyuncu olamaz
+            // yanlış bir şekilde girildiğinde doğru formatı yazmalı
+            // yanlış girilirse manuel input almak (optional)
+            //fixArgs(checkArgs());
+
+            String arg = args[i].toLowerCase();
+
+
+            switch(arg){
+                case "human":
                     players.add(new Human(args[i-1]));
                     break;
-                case "Novice":
+                case "novice":
                     players.add(new BotNovice(args[i-1]));
                     break;
-                case "Normal"://plays jack when empty board
+                case "normal":
                     players.add(new BotNormal(args[i-1]));
                     break;
-                case "Expert":
+                case "expert":
                     players.add(new BotExpert(args[i-1]));
                     break;
                 default:
@@ -51,13 +63,14 @@ public class Game {
 
     }
     public void setVerbose(String[] args){//sets verbose mode based on the last argument name
-        if(args[args.length-1].equals("verbose")){
+        String arg = args[args.length-1].toLowerCase();
+        if(arg.equals("verbose")){
             isVerbose = true;
-            System.out.println("Verbose mode is enabled");
+            System.out.println("Verbose mode is enabled.");
         }
         else{
             isVerbose = false;
-            System.out.println("Verbose mode is not enabled");
+            System.out.println("Verbose mode is not enabled.");
         }
     }
     public void debug(){// shows deck size, player hands, scores and the state of the board
@@ -90,12 +103,10 @@ public class Game {
         }
     }
     public void round(){//makes every player play once
-        if(isVerbose){
             System.out.println("------Round " + (roundNumber++)+"------");
-        }
         for(Player player: players){
             if(isVerbose){
-                System.out.println();
+                System.out.println("Player "+player.getName()+" is playing.");
                 player.see();
             }
 
