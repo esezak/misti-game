@@ -43,15 +43,15 @@ public class BotExpert extends Player implements Playable{
             }
 
             if(hasSelected){//this part is for playing if a board can be taken
-                System.out.println("Has board taken?");//for debug
+                //System.out.println("Has board taken?");//for debug
                 return selectedIndex;
             }else if(hasJack){
-                System.out.println("Has board taken?");//for debug
+                //System.out.println("Has board taken?");//for debug
                 return jackIndex;
             }
         }
         selectedIndex = findMostPlayedCardIndex();
-        System.out.println("Selected index: "+selectedIndex);//for debug
+        //System.out.println("Selected index: "+selectedIndex);//for debug
         return selectedIndex;
     }
 

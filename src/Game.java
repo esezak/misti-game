@@ -8,14 +8,16 @@ public class Game {
     private Card bufferCard; // a card for temporarily store a card
     private int roundCounter; // for keeping track of when to deal cards
     private int roundNumber;
+    private int numberOfHumans=0;
     private boolean isVerbose=false; // check if verbose mode is enabled
     private FileHandling fileHandling;
+    private String[] args;
 
     public Game(String[] args) {
         //Parameters include "2 point.txt Can Human Ege Novice verbose"
         setVerbose(args);
         deck = new Deck(isVerbose);
-
+        this.args = args;
         //points are here
         fileHandling = new FileHandling(args[1],deck.getDeck());
         fileHandling.pointReading();
@@ -29,21 +31,26 @@ public class Game {
         //deck.see();
         board = new Board(deck);
         roundCounter =0;
-        for(int i = 0; i<args.length;i++){//adds users based on arguments
-            //Oyuncu sayısını kontrol etmeli
-            //insn oyuncu var mı kontrol etmeli
-            //4 oyuncudan fazla oyuncu var mı kontrol
-            // 1 den fazla insan oyuncu olamaz
-            // yanlış bir şekilde girildiğinde doğru formatı yazmalı
-            // yanlış girilirse manuel input almak (optional)
-            //fixArgs(checkArgs());
+        validateArgs(checkArgs());
 
+        System.out.println("\nThere are "+ playerCount()+" players playing");
+        dealCards();
+
+    }
+    public void validateArgs(boolean argsOk){
+        if(!argsOk){
+            System.err.println("Argument format should be: <number of players> <point file name> <p1 name> <p1 type> <p2 name> <p2 type> ... <p4 type> <verbose> (if needed)");
+            System.exit(0);
+        }
+    }
+
+    public boolean checkArgs(){
+        for(int i = 3; i<args.length;i++){//adds users based on arguments
             String arg = args[i].toLowerCase();
-
-
             switch(arg){
                 case "human":
                     players.add(new Human(args[i-1]));
+                    numberOfHumans++;
                     break;
                 case "novice":
                     players.add(new BotNovice(args[i-1]));
@@ -58,9 +65,27 @@ public class Game {
                     break;
             }
         }
-        System.out.println("\nThere are "+ playerCount()+" players playing");
-        dealCards();
-
+        int numplayer;
+        //check number of players
+        try{
+            numplayer = Integer.parseInt(args[0]);
+        }catch(NumberFormatException numex){
+            System.err.println("\nFirst argument must be the number of players.");
+            return false;
+        }
+        if(numberOfHumans==0 || numberOfHumans >1){
+            System.err.println("\nThere must be 1 human player with name.");
+            return false;
+        }
+        if(numplayer>4 || numplayer < 2){
+            System.err.println("\nNumber of player must be 2,3 or 4.");
+            return false;
+        }
+        if(numplayer!=players.size()){
+            System.err.println("\nNumber of players given in the arguments does not match!");
+            return false;
+        }
+        return true;
     }
     public void setVerbose(String[] args){//sets verbose mode based on the last argument name
         String arg = args[args.length-1].toLowerCase();
