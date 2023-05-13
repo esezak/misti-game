@@ -9,7 +9,7 @@ public class Human extends Player implements Playable {
         Scanner sc = new Scanner(System.in);
         boolean check = true;
         int input=0;
-        while(check){
+        while(check){//loop until a valid input is given
             try{
                 board.seeBoard();
                 see();//sees hand

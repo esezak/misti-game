@@ -1,10 +1,11 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 public class Deck {
     private ArrayList<Card> deck = new ArrayList<Card>(52);//a deck of card
     private boolean isVerbose;
     public void see(){
         System.out.print("\nDeck :  ");
-        for(Card c: deck){
+        for(Card c : deck){
             System.out.print(c.getCard()+"("+c.getPoint()+"), ");//see what is inside the deck
 
         }
@@ -14,7 +15,7 @@ public class Deck {
 
     public Deck(boolean isVerbose){//creates a deck
         create();
-        this.isVerbose=isVerbose;
+        this.isVerbose = isVerbose;
     }
 
     public void create(){
@@ -29,14 +30,12 @@ public class Deck {
 
     public void cut(int cutLocation){
         ArrayList<Card> tempDeck = new ArrayList<Card>(52);
-        int j=0;    // cutLocation variable to store where we last are
-        for(int i=cutLocation; i< deck.size();i++ ){
-            tempDeck.add(j,deck.get(i));//take 52-cutLocation cards move them to front
-            j++;
+
+        for(int i=cutLocation; i< deck.size(); i++ ){
+            tempDeck.add(deck.get(i));//take 52-cutLocation cards move them to front
         }
-        for(int i=0;i<cutLocation;i++){
-            tempDeck.add(j,deck.get(i));//insert the remaining cards to where we left off
-            j++;
+        for(int i = 0; i < cutLocation; i++){
+            tempDeck.add(deck.get(i));//insert the remaining cards to where we left off
         }
         deck = (ArrayList<Card>) tempDeck.clone();
     }
@@ -44,9 +43,9 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    //public Card getCard(int index){return deck.get(index);}   //wasn't used
+
     public Card seeTopCard(){
-        if(deck.size()>0){
+        if(deck.size() > 0){
             return deck.get(deck.size()-1);
         }
         else{
@@ -60,7 +59,7 @@ public class Deck {
         return deck;
     }
     public Card transferCard(){
-        if(deck.size()>0){
+        if(deck.size() > 0){
         Card temp = seeTopCard();
         deck.remove(deck.size()-1);
         return temp;
@@ -69,5 +68,14 @@ public class Deck {
             //should not suppose to go here but just in case
         }
     }
+    public void showChangedCards(){
+        System.out.print("\nCards with changed points: ");
+        for(Card c : deck){
+            if(c.getPoint() != 1){
+                System.out.print(c.getCard()+"("+c.getPoint()+") ");
+            }
+        }
+    }
+
 
 }

@@ -12,6 +12,7 @@ public class BotNormal extends Player implements Playable{
         okToPlay = new boolean[]{true, true, true, true};
         int jackIndex = 0;
         int selectedIndex = 0;
+
         if (getHand().size() == 1) {//shortcut when we have 1 card left at hand
             return selectedIndex;
         }

@@ -36,17 +36,18 @@ public class FileHandling {
                         int point = Integer.parseInt(components[1]);
                         s = Character.toString(symbol);
 
-                        if (s.equals("H") || s.equals("h")) {// converts symbol to unicode counterparts
+                        s = s.toLowerCase();
+                        if (s.equals("h")) {// converts symbol to unicode counterparts
                             s = "♥";
-                        } else if (s.equals("S") || s.equals("s")) {
+                        } else if (s.equals("s")) {
                             s = "♠";
-                        } else if (s.equals("C") || s.equals("c")) {
+                        } else if (s.equals("c")) {
                             s = "♣";
-                        } else if (s.equals("D") || s.equals("d")) {
+                        } else if (s.equals("d")) {
                             s = "♦";
                         }
 
-                    for (Card card : deck) {
+                    for (Card card : deck) {//card search in deck
                         if (card.getNumber().equals(number) && card.getSymbol().equals(s) && card.getPoint() == 1) {
                             card.setPoint(point);
                             break;
@@ -127,14 +128,12 @@ public class FileHandling {
         setListSize();
         try {
             writer = new FileWriter("scores.txt", false);
-            for(int i=0; i< listSize;i++){
+            for(int i = 0; i < listSize; i++){
                 formatter = new Formatter(writer);
-                //if(scores.get(i)!=null) {
-                    formatter.format("%s,%s\n", names.get(i), scores.get(i));
-                //}
+                formatter.format("%s,%s\n", names.get(i), scores.get(i));//writes formatted
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.err.println("Write error");
         }finally {
             if (formatter != null){
                 formatter.close();

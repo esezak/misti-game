@@ -1,9 +1,3 @@
-/*
-Play Card
-Get Card
-*/
-
-
 import java.util.ArrayList;
 
 public class Player implements Playable{
@@ -11,7 +5,7 @@ public class Player implements Playable{
     private String name;
     private int point;
     private boolean lastTake=false;//indicates who last took cards from the board
-    public void see(){//mainly for human player and debug
+    protected void see(){//mainly for human player and debug
         System.out.print("Hand: ");
         if(hand.size()!=0){
             for(int i = 0; i<hand.size();i++){
@@ -50,8 +44,8 @@ public class Player implements Playable{
         return hand;
     }
 
-    public int simulatePoint(Board board, Card card){//simulates the amount of point gained/lost from playing the card
-        if(board.getSize()==1){
+    protected int simulatePoint(Board board, Card card){//simulates the amount of point gained/lost from playing the card
+        if(board.getSize()==1 && !card.getNumber().equals("J")){
             return (board.getBoardPoint()+ card.getPoint())*5;
         }
         return board.getBoardPoint()+card.getPoint();
@@ -69,7 +63,7 @@ public class Player implements Playable{
     public boolean isLastTake() {
         return lastTake;
     }
-    public static int parseNumber(String number){
+    public static int parseNumber(String number){//like parseInt but more specialised for our use case
         if(number.equals("J")){
             return 11;
         }else if(number.equals("Q")){
