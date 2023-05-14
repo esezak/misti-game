@@ -33,9 +33,8 @@ public class FileHandling {
                         components = line.split(" ");
                         char symbol = components[0].charAt(0);
                         String number = components[0].substring(1);
-                        int point = Integer.parseInt(components[1]);
+                        int point = Integer.parseInt(components[components.length-1]);
                         s = Character.toString(symbol);
-
                         s = s.toLowerCase();
                         if (s.equals("h")) {// converts symbol to unicode counterparts
                             s = "♥";
