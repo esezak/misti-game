@@ -30,7 +30,7 @@ public class BotNormal extends Player implements Playable{
                         selectedIndex = counter;
                         hasSelected = true;
                     }
-                } else if (c.getNumber().equals("J")) {
+                } else if (c.getNumber().equals("J") && !(board.getSize()==0)) {
                     if (simulatePoint(board, c) <= 0) {
                         okToPlay[counter] = false;
                     } else {
@@ -42,10 +42,10 @@ public class BotNormal extends Player implements Playable{
             }
 
             if (hasSelected) {//this part is for playing if a board can be taken
-                System.out.println("Has board taken?");//for debug
+                //System.out.println("Has board taken?");//for debug
                 return selectedIndex;
-            } else if (hasJack) {
-                System.out.println("Has board taken?");//for debug
+            } else if (hasJack && okToPlay[jackIndex]) {
+                //System.out.println("Has board taken?");//for debug
                 return jackIndex;
             }
 

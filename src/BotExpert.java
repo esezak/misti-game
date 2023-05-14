@@ -32,7 +32,7 @@ public class BotExpert extends Player implements Playable{
                         hasSelected=true;
                     }
                 } else if (c.getNumber().equals("J")) {
-                    if(simulatePoint(board,c)<=0){
+                    if(simulatePoint(board,c)<=0 && !(board.getSize()==0)){
                         okToPlay[counter]=false;
                     }else{
                         hasJack=true;
@@ -45,7 +45,7 @@ public class BotExpert extends Player implements Playable{
             if(hasSelected){//this part is for playing if a board can be taken
                 //System.out.println("Has board taken?");//for debug
                 return selectedIndex;
-            }else if(hasJack){
+            }else if(hasJack && okToPlay[jackIndex]){
                 //System.out.println("Has board taken?");//for debug
                 return jackIndex;
             }
